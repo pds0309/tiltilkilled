@@ -13,8 +13,10 @@
 ### 1. 통합 테스트를 위한 설정 추가하기
 
 `@SpringBootTest`
-	- `properties` 커스터마이징도 가능 , 설정 없으면 default 설정으로 테스트 수행
-	- `@SpringBootTest( properties = {"spring.config.location=classpath:application-test.properties"} )`
+
+- `properties` 커스터마이징도 가능 , 설정 없으면 default 설정으로 테스트 수행
+	
+- `@SpringBootTest( properties = {"spring.config.location=classpath:application-test.properties"} )`
 		- `@TestPropertySource` 로도 가능
 
 `@ActiveProfile`
@@ -32,27 +34,37 @@
 - 실제 요청 응답 환경 처럼 구성이 필요하겠죠?
 
 **Mock**
-	- `@AutoConfigureMockMvc` 어노테이션으로 별다른 설정 없이 `MockMvc` 사용하는 테스트 진행 가능
-	- 실제 컨테이너를 실행시키진 않고 로직상으로의 테스트를 수행함
+
+- `@AutoConfigureMockMvc` 어노테이션으로 별다른 설정 없이 `MockMvc` 사용하는 테스트 진행 가능
+
+- 실제 컨테이너를 실행시키진 않고 로직상으로의 테스트를 수행함
 
 
 **Port 명시**
-	- `EmbeddedWebApplicationContext` 를 로드해 실제 서블릿 환경을 구성
-	- `RANDOM` or `DEFINE`
-	- 포트 명시했을 때 `@Transactional` 동작 안함(롤백 안됨)
+
+- `EmbeddedWebApplicationContext` 를 로드해 실제 서블릿 환경을 구성
+
+- `RANDOM` or `DEFINE`
+
+- 포트 명시했을 때 `@Transactional` 동작 안함(롤백 안됨)
 
 **TestRestTemplate**
-	- `@SpringBootTest` 에서 `Web Environment` 설정하면 알아서 빈 생성되서 `@Autowired` 해서 사용 가능 
-	- http 요청 후 데이터를 응답받을 수 있는 템플릿 객체이며 Rest 방식의 API 테스트에 최적화 되어있다.
-		- `Header`, `Body`, `Content-Type` 활용한 호출 가능
-		- `ResponseEntity` 와 사용
-	- 서블릿 컨테이너를 직접 실행 시키는 방식임
+
+
+- `@SpringBootTest` 에서 `Web Environment` 설정하면 알아서 빈 생성되서 `@Autowired` 해서 사용 가능 
+
+- http 요청 후 데이터를 응답받을 수 있는 템플릿 객체이며 Rest 방식의 API 테스트에 최적화 되어있다.
+	- `Header`, `Body`, `Content-Type` 활용한 호출 가능
+	- `ResponseEntity` 와 사용
+
+- 서블릿 컨테이너를 직접 실행 시키는 방식임
 
 <br>
 
 **MockMvc vs TestRestTemplate 테스트 관점**
 
 - `MockMvc` 는 서버 입장에서 API 에 대한 비즈니스 로직 검증 테스트를 하는 것
+
 - `TestRestTemplate` 는 클라이언트 입장에서 실제 사용에 문제가 없는지 테스트를 하는 것
 	- 좀 더 통합테스트의 관점을 지님
 
