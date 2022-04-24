@@ -181,9 +181,9 @@ public class LateInvoiceNotifier {
 	
 		@Before
 		public void setup(){
-			// 외부 의존성1 을 Stubbing 한다.
+			// 외부 의존성1 을 가짜객체로 만든다.
 			invoiceStorage = mock(InvoiceStorage.class);
-			// 외부 의존성2 를 Stubbing 한다.
+			// 외부 의존성2 를 가짜객체로 
 			emailSender = mock(EmailSender.class);
 			
 			// 가짜 의존성들 주입하며 테스트하에 있는 클래스 초기화
